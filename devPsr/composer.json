@@ -1,0 +1,17 @@
+{
+    "name": "phantom/dev-psr",
+    "description": "examole",
+    "autoload": {
+        "psr-4": {
+            "Phantom\\DevPsr\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "a",
+            "email": "logvinov.daniil@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
