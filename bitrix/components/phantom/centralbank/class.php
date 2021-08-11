@@ -8,6 +8,8 @@ class CurrencyExchangeRate extends CBitrixComponent
         $date = new DateTime();
         $curDate = $date->format('d/m/Y');
         $val = simplexml_load_file("http://www.cbr.ru/scripts/XML_daily.asp?date_req=$curDate&d=0");
+
+
         if(!is_string($val)) {
             foreach ($arParams['CURRENCY'] as $param) {
                 foreach ($val->Valute as $vt) {

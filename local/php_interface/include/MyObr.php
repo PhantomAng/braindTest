@@ -1,15 +1,15 @@
 <?php
 AddEventHandler('main', 'OnBeforeEventSend', Array("MyObr", "PickupAddress"));
+use  \Bitrix\Catalog;
+define('idDelivery', 3); //идентификатор службы доставки самовывоз
 
 class MyObr
 {
-
     function PickupAddress(&$arFields, &$arTemplate)
     {
         if($arTemplate['EVENT_NAME'] === 'SALE_NEW_ORDER')
         {
-            $date = serialize($arFields);
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/bitrix/php_interface/include/text1.txt", $date);
+
             $id = $arFields['ORDER_REAL_ID'];
             $order = \Bitrix\Sale\Order::load($id);
             $shipment = $order->getDeliveryIdList();
@@ -17,13 +17,27 @@ class MyObr
             {
                 $idDelivery = $sh;
             }
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/bitrix/php_interface/include/text1.txt", $idDelivery);
-            if($idDelivery == 3)
+            if($idDelivery == idDelivery)
             {
-                $arFields += array("ADDRESS_PICKUP"=>'Адрес пункта самовывоза: ул.Ленина 17, 3 этаж, офис 43');
+                $storeId = false;
+                foreach ($order->getShipmentCollection() as $col)
+                {
+                    $storeId = $col->getStoreId();
+                    if($storeId) break;
+                }
+                if($storeId)
+                {
+                    $arStore = Catalog\StoreTable::getRow(
+                        [
+                            'select'=>['ADDRESS'],
+                            'filter'=>[
+                                'ID'=>$storeId,
+                            ]
+                        ]
+                    );
+                }
+                $arFields += array("ADDRESS_PICKUP"=>'Адрес пункта самовывоза: '.$arStore['ADDRESS']);
             }
-            $temp = serialize($arFields);
-            file_put_contents($_SERVER['DOCUMENT_ROOT']."/bitrix/php_interface/include/text1.txt", $temp);
         }
         elseif($arTemplate['EVENT_NAME'] === 'SALE_STATUS_CHANGED_F'){
             $id = $arFields['ORDER_REAL_ID'];

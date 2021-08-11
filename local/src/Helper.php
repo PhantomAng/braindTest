@@ -9,7 +9,7 @@ class Helper
      * @param array $word - Массив слов для склонения
      * @return string
      * */
-    function DeclensionOfWords($num, $word)
+    static function DeclensionOfWords($num, $word)
     {
         $val = $num % 10;
         if($val > 19)
@@ -33,7 +33,7 @@ class Helper
     /*
      * @param $value - То что нужно вывести в тегах <pre> </pre>
     */
-    function Pre ($value)
+    static function Pre ($value)
     {
         if(is_array($value)){
             echo '<pre>'; print_r($value); echo '</pre>';

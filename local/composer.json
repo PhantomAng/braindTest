@@ -1,17 +1,16 @@
 {
-    "name": "phantom/dev-psr",
-    "description": "examole",
+    "name": "phantom/local",
+    "description": "example",
     "autoload": {
         "psr-4": {
-            "Phantom\\DevPsr\\": "src/"
+            "Phantom\\Local\\": "src/"
         }
     },
     "authors": [
         {
-            "name": "a",
+            "name": "Daniil",
             "email": "logvinov.daniil@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {}
 }

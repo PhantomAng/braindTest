@@ -4,17 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit049013f6e34fe5a2f5d61ae784ce4b90
+class ComposerStaticInit0cdeb79f42329a416fef9213b472c3dc
 {
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
-            'Phantom\\DevPsr\\' => 15,
+            'Phantom\\Local\\' => 14,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Phantom\\DevPsr\\' => 
+        'Phantom\\Local\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -27,9 +27,9 @@ class ComposerStaticInit049013f6e34fe5a2f5d61ae784ce4b90
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit049013f6e34fe5a2f5d61ae784ce4b90::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit049013f6e34fe5a2f5d61ae784ce4b90::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit049013f6e34fe5a2f5d61ae784ce4b90::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0cdeb79f42329a416fef9213b472c3dc::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0cdeb79f42329a416fef9213b472c3dc::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit0cdeb79f42329a416fef9213b472c3dc::$classMap;
 
         }, null, ClassLoader::class);
     }
